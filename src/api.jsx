@@ -1,8 +1,15 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:3001' });
+const API = axios.create({ baseURL: '/api' });
 
-export const getItems = () => API.get('/items');
-export const addItem = (item) => API.post('/items', item);
-export const updateItem = (id, item) => API.put(`/items/${id}`, item);
-export const deleteItem = (id) => API.delete(`/items/${id}`);
+export const getItems = (sortBy) => {
+  return API.get('/todo', {
+    params: {
+      sortBy: sortBy
+    }
+  });
+};
+export const addItem = (item) => API.post('/todo', item);
+export const updateItem = (id, title) => API.put(`/todo/${id}`, title);
+export const deleteItem = (id) => API.delete(`/todo/${id}`);
+export const setStatus = (id, status) => API.patch(`/todo/${id}`, { isComplete: status });
