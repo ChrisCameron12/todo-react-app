@@ -83,13 +83,13 @@ form button:hover {
 }
 
 .sort-options-wrapper {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  right: 0;
+  right: 0; */
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
 }
 
 .todo-sort {

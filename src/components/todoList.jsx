@@ -1,19 +1,4 @@
-// components/ItemList.jsx
 function ItemList({ items, onEdit, onDelete, onStatusChange, selectedStatuses }) {
-  if (items.length === 0) {
-    return (
-      <ul className="todo-items-list">
-        <li className="todoItems" key="default">
-          Buy Elisha some flowers
-          <div className="editBtnWrapper">
-            <button onClick={() => onEdit({ id: 'default', name: 'Sample Item' })}>Edit</button>
-            <button onClick={() => onDelete('default')}>Delete</button>
-          </div>
-        </li>
-      </ul>
-    );
-  }
-
   return (
     
     <ul className="todo-items-list">
