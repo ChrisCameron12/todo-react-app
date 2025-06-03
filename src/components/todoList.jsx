@@ -1,16 +1,16 @@
-function ItemList({ items, onEdit, onDelete, onStatusChange, selectedStatuses }) {
+function TodoList({ todos, onEdit, onDelete, onStatusChange, selectedStatuses }) {
   return (
     
     <ul className="todo-items-list">
-      {items.map(item => (
-        <li key={item.id} className={selectedStatuses[item.id]}>
-          {item.title}
+      {todos.map(todo => (
+        <li key={todo.id} className={selectedStatuses[todo.id]}>
+          {todo.title}
 
           <div className="settings-section">
             <div className="settings-section-options">
               <strong className="settings-section-options-title">Options:</strong>
-              <button onClick={() => onEdit(item)}>Edit</button>
-              <button onClick={() => onDelete(item.id)}>Delete</button>
+              <button onClick={() => onEdit(todo)}>Edit</button>
+              <button onClick={() => onDelete(todo.id)}>Delete</button>
               <div className="dot"></div>
             </div>
 
@@ -19,8 +19,8 @@ function ItemList({ items, onEdit, onDelete, onStatusChange, selectedStatuses })
               {['inProgress', 'complete', 'pending'].map(status => (
                 <button
                   key={status}
-                  className={selectedStatuses[item.id] === status ? 'selected' : ''}
-                  onClick={() => onStatusChange(item.id, status)}
+                  className={selectedStatuses[todo.id] === status ? 'selected' : ''}
+                  onClick={() => onStatusChange(todo.id, status)}
                 >
                   {status.charAt(0).toUpperCase() + status.slice(1)}
                 </button>
@@ -33,4 +33,4 @@ function ItemList({ items, onEdit, onDelete, onStatusChange, selectedStatuses })
   );
 }
 
-export default ItemList;
+export default TodoList;

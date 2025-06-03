@@ -1,23 +1,24 @@
-// components/ItemForm.jsx
 import { useState, useEffect } from 'react';
 
-function ItemForm({ currentItem, onSave, onSortChange }) {
+function TodoForm({ currentTodo, onSave, onSortChange }) {
+  // Local state for the input field (title of the todo)
   const [title, setTitle] = useState('');
 
+  //edit: update the input field
   useEffect(() => {
-    setTitle(currentItem?.title || '');
-  }, [currentItem]);
+    setTitle(currentTodo?.title || ''); // Use the todo title or default to an empty string
+  }, [currentTodo]);
 
+  //add or update a todo
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await onSave({ id: currentItem?.id, title });
-    setTitle('');
+    e.preventDefault(); // Prevent default page reload
+    await onSave({ id: currentTodo?.id, title });
+    setTitle(''); // Clear the input after saving
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Todo List</h1>
-
       <div className="sort-options-wrapper">
         <label htmlFor="sortSelect" className="sort-options-heading">Sort options:</label>
         <select
@@ -31,18 +32,17 @@ function ItemForm({ currentItem, onSave, onSortChange }) {
           <option value="pending">Pending</option>
         </select>
       </div>
-
       <div className="todo-input">
         <input
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
+          onChange={(e) => setTitle(e.target.value)} 
+          required 
           placeholder="Enter todo..."
         />
-        <button type="submit">{currentItem ? 'Update' : 'Add'}</button>
+        <button type="submit">{currentTodo ? 'Update' : 'Add'}</button>
       </div>
     </form>
   );
 }
 
-export default ItemForm;
+export default TodoForm;
